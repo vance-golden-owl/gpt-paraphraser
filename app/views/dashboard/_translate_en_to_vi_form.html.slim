@@ -1,0 +1,8 @@
+= turbo_frame_tag "translate-en-to-vi-form" do 
+  = form_with url: translate_path, method: :post, class: "flex flex-col gap-2" do |f|
+    = f.hidden_field :from, value: from 
+    = f.hidden_field :to, value: to 
+    = f.label :paragraph, class: "text-lg" do 
+      = label_content
+    = f.text_area :paragraph, value: paragraph, placeholder: "Paraphrased text",class: "border border-black rounded-lg p-2"
+    = f.submit "Translate", class: "bg-blue-500 rounded-lg text-white w-32 py-2 mt-2"

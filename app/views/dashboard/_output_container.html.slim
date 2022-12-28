@@ -1,0 +1,9 @@
+= turbo_frame_tag "output-container" do
+  .flex.flex-col.gap-2
+    h2.text-lg 
+      = label_content
+    .border.border-black.rounded-lg.p-2.h-24
+      - if paragraph == ""
+        span.text-gray-500.pb-8 
+          | Vietnamese paraphrased text
+      = paragraph

@@ -1,0 +1,12 @@
+.dashboard-container
+  .mx-52.my-16.flex.flex-col.gap-4
+    h1.text-2xl
+      | GPT Translator
+
+    = render "translate_vi_to_en_form", label_content: "Vietnamese text", paragraph: "", from: "vi", to: "en"
+    
+    = render "paraphrase_form", label_content: "English text", paragraph: ""
+     
+    = render "translate_en_to_vi_form", label_content: "English paraphrased text", paragraph: "",from: "en", to: "vi"
+   
+    = render "output_container", label_content: "Vietnamese paraphrased text", paragraph: ""

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root "dashboard#index"
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  post "translate", to: "dashboard#translate"
+  post "paraphrase", to: "dashboard#paraphrase"
 end

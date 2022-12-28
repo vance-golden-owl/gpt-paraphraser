@@ -1,0 +1,6 @@
+= turbo_frame_tag "paraphrase-form" do 
+  = form_with url: paraphrase_path, method: :post, class: "flex flex-col gap-2" do |f|
+    = f.label :paragraph, class: "text-lg" do 
+      = label_content
+    = f.text_area :paragraph, value: paragraph, placeholder: "Result from GPT API will be display here", class: "border border-black rounded-lg p-2"
+    = f.submit "Paraphrase", class: "bg-blue-500 rounded-lg text-white w-32 py-2 mt-2"

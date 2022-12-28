@@ -1,0 +1,3 @@
+GOOGLE_TRANSLATOR_PROJECT_ID: 
+GOOGLE_TRANSLATOR_CREDENTIALS: "config/your-google-cloud-credential.json"
+GPT_SECRECT_KEY: 

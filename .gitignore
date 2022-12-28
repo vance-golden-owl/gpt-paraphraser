@@ -36,3 +36,9 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+.env
+# Ignore application configuration
+/config/application.yml
+/config/database.yml
+/config/brand-recogni-9ce3b0d210cc.json
