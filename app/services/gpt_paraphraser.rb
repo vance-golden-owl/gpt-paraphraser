@@ -16,7 +16,8 @@ class GptParaphraser < ApplicationService
           Rewrite content: short is not his characteristic.
           Content: #{@paragraph}
           Rewrite content: 
-        )
+        ),
+        max_tokens: 2048
       }
     )
 
