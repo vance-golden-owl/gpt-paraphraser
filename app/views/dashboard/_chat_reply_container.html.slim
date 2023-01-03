@@ -1,0 +1,9 @@
+= turbo_frame_tag "chat-reply-container" do
+  .flex.flex-col.gap-2
+    h2.text-lg 
+      = label_content
+    .p-2
+      - if content == ""
+        span.text-gray-500.pb-8 
+          | Waiting for questions...
+      = content

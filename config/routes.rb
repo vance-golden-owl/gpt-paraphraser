@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   post "translate", to: "dashboard#translate"
   post "paraphrase", to: "dashboard#paraphrase"
+  post "chat", to: "dashboard#chat"
 end
