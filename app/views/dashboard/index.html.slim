@@ -22,4 +22,5 @@
         = f.text_area :content, placeholder: "Ask GPT AI something", class: "h-40 border border-black rounded-lg p-2"
         = f.submit "Send", class: "bg-blue-500 rounded-lg text-white w-32 py-2 mt-2"
       
-      = render "chat_reply_container", label_content: "GPT AI", content: ""
+      = render "shared/spinner_container" do
+        = render "chat_reply_container", label_content: "GPT AI", content: ""
