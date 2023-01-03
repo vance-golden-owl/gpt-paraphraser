@@ -5,7 +5,8 @@ class DashboardController < ApplicationController
     paragraph = params[:paragraph]
     from = params[:from]
     to = params[:to]
-    translated_paragraph = GoogleTranslator.call(paragraph, from, to)
+    # translated_paragraph = GoogleTranslator.call(paragraph, from, to)
+    translated_paragraph = "Testing.."
 
     case to
     when 'en'
