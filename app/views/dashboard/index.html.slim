@@ -5,9 +5,8 @@
         | GPT Paraphraser
 
       = render "translate_vi_to_en_form", label_content: "Vietnamese text", paragraph: "", from: "vi", to: "en"
-      
-      = render "shared/spinner_container" do 
-        = render "paraphrase_form", label_content: "English text", paragraph: ""
+
+      = render "paraphrase_form", label_content: "English text", paragraph: ""
       
       = render "translate_en_to_vi_form", label_content: "English paraphrased text", paragraph: "",from: "en", to: "vi"
     
