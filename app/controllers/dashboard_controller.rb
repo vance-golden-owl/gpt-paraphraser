@@ -1,4 +1,4 @@
-class DashboardController < ApplicationController 
+class DashboardController < ApplicationController
   def index; end
 
   def translate
@@ -7,44 +7,45 @@ class DashboardController < ApplicationController
     to = params[:to]
     translated_paragraph = GoogleTranslator.call(paragraph, from, to)
 
-    if to == "en"
-      render turbo_stream: 
+    case to
+    when 'en'
+      render turbo_stream:
         turbo_stream.replace(
-          "paraphrase-form", 
-          partial: "dashboard/paraphrase_form",
-          locals: { label_content: "English text", paragraph: translated_paragraph }
+          'paraphrase-form',
+          partial: 'dashboard/paraphrase_form',
+          locals: { label_content: 'English text', paragraph: translated_paragraph }
         )
-    elsif to == "vi"
-      render turbo_stream: 
+    when 'vi'
+      render turbo_stream:
         turbo_stream.replace(
-          "output-container", 
-          partial: "dashboard/output_container",
-          locals: { label_content: "Vietnamese paraphrased text", paragraph: translated_paragraph }
+          'output-container',
+          partial: 'dashboard/output_container',
+          locals: { label_content: 'Vietnamese paraphrased text', paragraph: translated_paragraph }
         )
     end
   end
 
   def paraphrase
-    paragraph = params[:paragraph] 
+    paragraph = params[:paragraph]
     paraphrased_paragraph = Gpt::Paraphraser.call(paragraph)
 
-    render turbo_stream: 
+    render turbo_stream:
       turbo_stream.replace(
-        "translate-en-to-vi-form", 
-        partial: "dashboard/translate_en_to_vi_form",
-        locals: { label_content: "English paraphrased text", paragraph: paraphrased_paragraph, from: "en", to: "vi" }
+        'translate-en-to-vi-form',
+        partial: 'dashboard/translate_en_to_vi_form',
+        locals: { label_content: 'English paraphrased text', paragraph: paraphrased_paragraph, from: 'en', to: 'vi' }
       )
   end
 
-  def chat 
-    content = params[:content] 
+  def chat
+    content = params[:content]
     reply_content = Gpt::ReplyGenerator.call(content)
-    
-    render turbo_stream: 
+
+    render turbo_stream:
       turbo_stream.replace(
-        "chat-reply-container",
-        partial: "dashboard/chat_reply_container",
-        locals: { label_content: "GPT AI", content: reply_content }
+        'chat-reply-container',
+        partial: 'dashboard/chat_reply_container',
+        locals: { label_content: 'GPT AI', content: reply_content }
       )
   end
 end
