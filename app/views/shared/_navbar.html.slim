@@ -1,0 +1,15 @@
+.sticky.top-0.px-2.py-4.font-bold.bg-black.text-white
+  ul.flex.justify-between
+    - if user_signed_in?
+      li.flex.gap-8.w-full
+        .
+          = "Hello, #{current_user.email}"
+
+        .
+          = link_to "API keys", user_api_keys_path(current_user)
+    
+        .ml-auto 
+          = button_to "Logout", destroy_user_session_path, method: :delete, class: "font-bold"
+    - else 
+      li
+        = link_to "Login", new_user_session_path 

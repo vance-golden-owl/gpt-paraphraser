@@ -1,0 +1,32 @@
+.dashboard-container
+  .flex.flex-col.gap-4
+    = render "shared/navbar"
+
+    .mx-40.my-16.flex.flex-col.gap-4.min-h-screen
+      - api_keys_count = current_user.api_keys.count
+      h1.text-2xl
+        = "You are currently having #{pluralize(api_keys_count, "API key")}"
+      - unless current_user.api_keys.blank?
+        table.table-auto
+          thead.border-b
+            tr 
+              th.text-left scole="col" 
+                | No 
+              th.text-left scole="col" 
+                | Encrypted Token
+              th.text-left scole="col"
+                | Created at
+              th 
+          tbody 
+            - current_user.api_keys.each_with_index do |api_key, index|
+              tr.border-b.py-2
+                td 
+                  = index + 1
+                td 
+                  = api_key.token_digest.truncate(20)
+                td
+                  = api_key.created_at
+                td 
+                  button.bg-red-500.text-white.rounded-lg.py-2.px-4
+                    | Delete
+          

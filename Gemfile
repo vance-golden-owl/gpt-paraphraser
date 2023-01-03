@@ -19,6 +19,8 @@ gem 'figaro'
 gem 'google-cloud'
 gem 'google-cloud-translate'
 gem 'ruby-openai'
+gem 'devise'
+gem 'bcrypt'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
