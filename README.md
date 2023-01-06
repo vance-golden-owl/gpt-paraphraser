@@ -1,7 +1,6 @@
 # README
 
 ## General Information
-
 - Ruby version: `ruby 3.1.2`
 - Rails version: `rails 7.0.4`
 - Database: `postgresql`
@@ -16,3 +15,6 @@
 - Start server: `rails s`
 - Start webpack server: `./bin/webpack-dev-server`
 - Visit `http://localhost:3000` and start your development
+
+## API Document
+- The application also support API, you can read more about it [here](api_documents/api_document.md)
