@@ -1,0 +1,7 @@
+= form_with model: api_key, url: user_api_keys_path(current_user), method: :post, class: "flex flex-col gap-4 .items-center" do |f|
+  .flex.flex-col.gap-2
+    = f.label :name, "Add a name for your API key", class: "font-bold"
+    = f.text_field :name, placeholder: "Name for API key", class: "border border-gray-500 rounded-lg w-96 p-2", required: "required"
+  .flex.justify-between.items-center.mt-4
+    = link_to "Cancel", user_api_keys_path(current_user), class: "text-blue-500"
+    = f.submit "Generate", class: "bg-blue-500 text-white p-2 rounded-lg"

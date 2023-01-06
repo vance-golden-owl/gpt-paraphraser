@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: api_keys
+#
+#  id           :bigint           not null, primary key
+#  bearer_id    :integer          not null
+#  bearer_type  :string           not null
+#  token_digest :string           not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  name         :string
+#
 class ApiKey < ApplicationRecord
   # Constants
   HMAC_SECRET_KEY = ENV['API_KEY_HMAC_SECRET_KEY']

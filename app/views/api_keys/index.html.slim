@@ -1,32 +1,40 @@
 .dashboard-container
   .flex.flex-col.gap-4
-    = render "shared/navbar"
-
     .mx-40.my-16.flex.flex-col.gap-4.min-h-screen
-      - api_keys_count = current_user.api_keys.count
-      h1.text-2xl
-        = "You are currently having #{pluralize(api_keys_count, "API key")}"
-      - unless current_user.api_keys.blank?
-        table.table-auto
+      - api_keys_count = @api_keys.count
+      .flex.justify-between.items-center
+        h1.text-2xl
+          = "You are currently having #{pluralize(api_keys_count, "API key")}"
+        
+        = link_to "Add new API key",
+                  new_user_api_key_path(current_user),
+                  class: "bg-blue-500 rounded-lg text-white py-2 px-4",
+                  data: { turbo_frame: "remote_modal" }
+    
+      - unless @api_keys.blank?
+        table.table-auto.mt-4
           thead.border-b
             tr 
               th.text-left scole="col" 
-                | No 
+                | Key.No 
               th.text-left scole="col" 
-                | Encrypted Token
+                | Name
               th.text-left scole="col"
                 | Created at
               th 
           tbody 
-            - current_user.api_keys.each_with_index do |api_key, index|
+            - @api_keys.each_with_index do |api_key, index|
               tr.border-b.py-2
                 td 
                   = index + 1
                 td 
-                  = api_key.token_digest.truncate(20)
+                  = display_text(api_key.name)
                 td
-                  = api_key.created_at
+                  = display_date(api_key.created_at)
                 td 
-                  button.bg-red-500.text-white.rounded-lg.py-2.px-4
-                    | Delete
-          
+                  = button_to "Delete",
+                              user_api_key_path(user_id: current_user, id: api_key),
+                              class: "bg-red-500 text-white rounded-lg py-2 px-4",
+                              method: :delete,
+                              form: { data: { turbo_confirm: 'Are you sure?' } }
+        

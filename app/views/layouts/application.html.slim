@@ -11,5 +11,8 @@ html
     = javascript_pack_tag 'application', 'data-turbo-track': 'reload'
   body 
     .wrapper 
+      = render "shared/navbar"
+      = render "shared/flash_message"
       = yield
+    = turbo_frame_tag 'remote_modal'
 

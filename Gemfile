@@ -30,6 +30,7 @@ end
 group :development do
   gem 'web-console'
   gem 'rubocop', '~> 1.42', require: false
+  gem 'annotate'
 end
 
 group :test do

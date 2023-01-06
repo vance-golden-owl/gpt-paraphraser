@@ -1,0 +1,5 @@
+.flex.flex-col.gap-2
+  - flash.each do |type, msg|
+    . class=style_base_on_flash_type(type)
+      span
+        = msg

@@ -1,6 +1,9 @@
 module Api
   module V1
     class DashboardController < ApplicationController
+      include ApiKeyAuthenticatable 
+      prepend_before_action :authenticate_with_api_key!
+
       def translate
         paragraph = params[:paragraph]
         from = params[:from]

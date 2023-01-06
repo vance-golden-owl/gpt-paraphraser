@@ -1,0 +1,17 @@
+.flex.flex-col.items-center.mt-8
+  h2.font-bold.text-2xl.mb-4
+    | Forgot your password?
+
+  = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+    .flex.flex-col.gap-4
+      = render "devise/shared/error_messages", resource: resource 
+
+      .flex.flex-col.gap-2
+        = f.label :email 
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full text-md p-2 rounded-lg border border-gray-300"
+
+      .flex.justify-center
+        = f.submit "Send me reset password instructions", class: "bg-teal-500 text-white rounded-lg py-2 px-8"
+  
+  .mt-4
+    = render "devise/shared/links" 
