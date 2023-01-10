@@ -21,6 +21,7 @@ gem 'google-cloud-translate'
 gem 'ruby-openai'
 gem 'devise'
 gem 'bcrypt'
+gem 'telegram-bot'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

@@ -19,4 +19,6 @@ Rails.application.routes.draw do
       post "chat", to: "dashboard#chat"
     end
   end
+
+  telegram_webhook Webhooks::TelegramBotController
 end

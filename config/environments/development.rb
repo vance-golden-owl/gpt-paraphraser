@@ -28,4 +28,6 @@ Rails.application.configure do
   config.active_record.verbose_query_logs = true
   config.assets.quiet = true
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.hosts << /[a-z0-9-]+\.ap\.ngrok\.io/
+  config.telegram_updates_controller.session_store = :file_store, Rails.root.join('tmp', 'session_store')
 end
