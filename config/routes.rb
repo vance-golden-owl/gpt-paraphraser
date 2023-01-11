@@ -21,4 +21,8 @@ Rails.application.routes.draw do
   end
 
   telegram_webhook Webhooks::TelegramBotController
+
+  namespace :webhooks do 
+    post "slack_bot/commands/gpt_en_chat", to: "slack_bot#gpt_en_chat"
+  end
 end
