@@ -19,7 +19,7 @@ module Webhooks
     def gpt_en_chat!(*)
       message_content = payload["text"].sub("/gpt_en_chat ", "")
       reply_content = Gpt::ReplyGenerator.call(message_content)
-      respond_with :message, text: reply_content
+      reply_with :message, text: reply_content
     end
 
     def gpt_vi_chat!(*)
@@ -27,13 +27,13 @@ module Webhooks
       en_content = GoogleTranslator.call(message_content, "vi", "en")
       en_reply = Gpt::ReplyGenerator.call(en_content)
       vi_reply = GoogleTranslator.call(en_reply, "en", "vi")
-      respond_with :message, text: vi_reply
+      reply_with :message, text: vi_reply
     end
 
     def gpt_en_paraphrase!(*)
       message_content = payload["text"].sub("/gpt_paraphrase_en ", "")
       reply_content = Gpt::Paraphraser.call(message_content)
-      respond_with :message, text: reply_content
+      reply_with :message, text: reply_content
     end
 
     def gpt_vi_paraphrase!(*)
@@ -41,11 +41,15 @@ module Webhooks
       en_content = GoogleTranslator.call(message_content, "vi", "en")
       en_reply = Gpt::Paraphraser.call(en_content)
       vi_reply = GoogleTranslator.call(en_reply, "en", "vi")
-      respond_with :message, text: vi_reply
+      reply_with :message, text: vi_reply
     end
 
-    def message(message_payload)
-      respond_with :message, text: "Sorry, I don't get what you said, please try to use commands in /help so that I can help you better"
+    def message(message_payload); end
+
+    def action_missing(action, *_args)
+      if action_type == :command
+        reply_with :message, text: "I don't know what the action /#{action_options[:command]} suppose to do, please try to use commands in /help so that I can help you better"
+      end
     end
   end
 end

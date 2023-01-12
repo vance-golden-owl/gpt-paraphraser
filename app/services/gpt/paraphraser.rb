@@ -5,7 +5,7 @@ module Gpt
     end
 
     def call
-      client = OpenAI::Client.new(access_token: ENV['GPT_SECRECT_KEY'])
+      client = OpenAI::Client.new
       response = client.completions(
         parameters: {
           model: 'text-davinci-003',
