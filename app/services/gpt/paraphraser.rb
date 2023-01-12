@@ -10,7 +10,7 @@ module Gpt
         parameters: {
           model: 'text-davinci-003',
           prompt: %(
-            "Rewrite the content with a different grammar structure"
+            Rewrite the content with a different grammar structure
             Content: My name is Vance.
             Rewrited content: I am Vance.
             Content: He is tall.
